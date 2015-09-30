@@ -1,0 +1,9 @@
+# Set some cookies, delete some cookies
+cookies/set?Server=httpbin&Proxy=Nginx&MAC=ca:ee:bb:d1:29:10&Uptime=1d10h
+cookies/set?OS=Linux
+cookies/delete?Server
+cookies/delete?Proxy
+cookies/delete?MAC
+cookies/delete?Uptime
+cookies/delete?OS
+
