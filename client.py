@@ -22,14 +22,19 @@ port = str(5000)
 while True:
     dosleep=random.randint(0,1500)
 
+    ua_header = random.choice(pool.UA_headers)
+    headers = {ua_header[0]:ua_header[1]}
+
     if dosleep == 750:
         time.sleep(1)
     else:
-        url = random.choice(pool.urls)
-
         # .... TODO: remember to switch this to "post" if our url is /post
         try:
-            r = requests.get(protocol + host + port + '/' + url)
+            uri = random.choice(pool.uris)
+            url = protocol + host + port + "/" + uri
+            if uri.startswith("/post"):
+                r = requests.post(url, headers=headers)
+            else:
+                r = requests.get(url, headers=headers)
         except Exception, e:
             print e
-

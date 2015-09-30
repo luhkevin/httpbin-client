@@ -1,0 +1,8 @@
+# Response-headers....remember that we can't use commas
+Age=12
+Content-Language=en
+Via=1.0 fred
+Warning=Dummy Warning
+Pragma=no-cache
+Server=httpbin
+Accept-Ranges=bytes
