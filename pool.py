@@ -33,6 +33,8 @@ uris.extend(cookies)
 #uris.extend(custom)
 #uris.extend(response_headers)
 
+periodic_uris = load_uris('periodic-endpoints')
+
 UAs = ["curl/7.9.8 (i686-pc-linux-gnu) libcurl 7.9.8 (OpenSSL 0.9.6b) (ipv6 enabled)",
        "Mozilla/5.0 (X11; Linux x86_64; rv:17.0) Gecko/20121202 Firefox/17.0 Iceweasel/17.0.1",
        "Mozilla/5.0 (Windows NT 6.1; WOW64; Trident/7.0; AS; rv:11.0) like Gecko",
