@@ -3,6 +3,8 @@ import random
 import time
 import logging
 import pool
+import sys
+from exceptions import IndexError
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
@@ -16,8 +18,16 @@ handler.setFormatter(formatter)
 logger.addHandler(handler)
 
 protocol= "http://"
-host = "httpbin-servers.gencore.io:"
-port = str(80)
+host = "httpbin-servers.gencore.io"
+port = "80"
+
+try:
+    host = str(sys.argv[1])
+    port = str(sys.argv[2])
+except IndexError, e:
+    print "No arguments given"
+except Exception, e:
+    print "Error"
 
 period = 200
 count=0
@@ -34,7 +44,7 @@ while True:
         # .... TODO: remember to switch this to "post" if our url is /post
         try:
             uri = random.choice(pool.uris)
-            url = protocol + host + port + "/" + uri
+            url = protocol + host + ":" + port + "/" + uri
             if uri.startswith("/post"):
                 r = requests.post(url, headers=headers)
             else:
@@ -45,8 +55,7 @@ while True:
     if count == 0:
         try:
             for uri in pool.periodic_uris:
-                url = protocol + host + port + "/" + uri
-                print "url is: ", url
+                url = protocol + host + ":" + port + "/" + uri
                 r = requests.get(url, headers=headers)
         except Exception, e:
             print e
