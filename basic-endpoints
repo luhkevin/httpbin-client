@@ -16,8 +16,13 @@ links/64
 html
 robots.txt
 deny
-bytes/128444
-bytes/50000000
+bytes/128444,20
+bytes/58100200,5
+bytes/2590700,20
+bytes/5000800,20
+bytes/10044010,20
+bytes/18801200,10
+bytes/9033060,15
 image/png
 image/jpeg
 forms/post
