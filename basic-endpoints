@@ -15,8 +15,6 @@ stream/32
 stream/64
 stream/99
 delay/1
-delay/2
-delay/4
 links/4
 links/8
 links/16
@@ -25,11 +23,8 @@ links/64
 html
 robots.txt
 deny
-bytes/28
-bytes/1000
-bytes/2048
-bytes/64000
 bytes/128444
+bytes/50000000
 image/png
 image/jpeg
 forms/post
