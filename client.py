@@ -1,4 +1,6 @@
+# .... TODO: support for "post" request
 import requests
+import grequests
 import random
 import time
 import logging
@@ -31,26 +33,28 @@ except Exception, e:
 
 period = 200
 count=0
+uris=pool.uris
+uri_window_size=len(uris)/10
+
+# This goes through the uris and makes asynchronous requests with batch size "uri_window_size"
 while True:
     count = (count + 1) % period
-    dosleep=random.randint(0,1500)
 
     ua_header = random.choice(pool.UA_headers)
     headers = {ua_header[0]:ua_header[1]}
 
-    if dosleep == 1500:
-        time.sleep(0.5)
-    else:
-        # .... TODO: remember to switch this to "post" if our url is /post
-        try:
-            uri = random.choice(pool.uris)
-            url = protocol + host + ":" + port + "/" + uri
-            if uri.startswith("/post"):
-                r = requests.post(url, headers=headers)
-            else:
-                r = requests.get(url, headers=headers)
-        except Exception, e:
-            print e
+    try:
+        random.shuffle(uris)
+        uri_ptr=0
+        while uri_ptr < len(uris):
+            uri_cap = uri_ptr + uri_window_size
+            uris_window = uris[uri_ptr:uri_cap]
+            rs = (grequests.get(protocol + host + ":" + port + "/" + u, headers=headers) for u in uris_window)
+            m = grequests.map(rs)
+            print "start: ", uri_ptr, " end: ", uri_cap
+            uri_ptr += uri_window_size
+    except Exception, e:
+        print e
 
     if count == 0:
         try:
