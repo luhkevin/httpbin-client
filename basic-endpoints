@@ -27,6 +27,5 @@ image/png
 image/jpeg
 forms/post
 xml,10
-drip?numbytes=1000&duration=4&delay=1&code=202
 basic-auth/user/passwd
 encoding/utf8
