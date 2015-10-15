@@ -1,7 +1,9 @@
 # These are supposed to run for certain every "period"
 response-headers?version=1
 response-headers?version=2
-bytes/10000000
+bytes/2500000,50
+bytes/5000000,50
+bytes/10000000,50
 bytes/20000000
 bytes/9000000
 bytes/18000000
