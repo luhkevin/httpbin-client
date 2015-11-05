@@ -7,10 +7,9 @@ relative-redirect/4
 absolute-redirect/4
 stream/32
 stream/64
-delay/1
-delayf/0.127,20
-delayf/0.075,20
-delayf/0.042,20
+delayf/0.127,10
+delayf/0.075,10
+delayf/0.042,10
 links/4
 links/8
 links/16
@@ -19,11 +18,11 @@ links/64
 html
 robots.txt
 deny
-bytes/128444,20
+bytes/128444,10
 bytes/58100200,5
 bytes/25907,20
 bytes/18801200,10
-bytes/9033060,15
+bytes/9033060,10
 image/png
 image/jpeg
 forms/post
