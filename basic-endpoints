@@ -7,9 +7,9 @@ relative-redirect/4
 absolute-redirect/4
 stream/32
 stream/64
-delayf/0.127,10
-delayf/0.075,10
-delayf/0.042,10
+delay/0.127,10
+delay/0.075,10
+delay/0.042,10
 links/4
 links/8
 links/16
