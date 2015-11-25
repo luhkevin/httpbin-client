@@ -23,9 +23,11 @@ protocol= "http://"
 host = "httpbin-servers.gencore.io"
 port = "80"
 
+mode = ""
 try:
     host = str(sys.argv[1])
     port = str(sys.argv[2])
+    mode = str(sys.argv[3])
 except IndexError, e:
     print "No arguments given"
 except Exception, e:
@@ -34,6 +36,11 @@ except Exception, e:
 period = 200
 count=0
 uris=pool.uris
+
+# ht = high throughput mode
+if mode == "ht":
+    uris=pool.ht_uris
+
 uri_window_size=len(uris)/10
 
 # This goes through the uris and makes asynchronous requests with batch size "uri_window_size"
