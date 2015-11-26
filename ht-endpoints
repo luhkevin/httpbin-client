@@ -1,27 +1,16 @@
 # High throughput endpoints
-get
+get,20
 gzip
 deflate
-redirect/4
-relative-redirect/4
-absolute-redirect/4
 links/4
 links/8
-links/16
-links/32
-links/64
 html
 robots.txt
-deny
 delay/0.05
 bytes/90,10
 image/png
-image/jpeg
-forms/post
-xml,10
-basic-auth/user/passwd
-encoding/utf8
-200,20
+xml,20
+200,30
 201
 202
 304
@@ -29,5 +18,5 @@ encoding/utf8
 400
 403
 404,20
-500,5
+500,10
 505,5

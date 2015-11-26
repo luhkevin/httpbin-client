@@ -1,0 +1,12 @@
+# High latency endpoints
+absolute-redirect/4
+stream/128
+stream/64
+delay/1,20
+delay/2,30
+delay/5,40
+bytes/128444,20
+bytes/58100200,20
+bytes/18801200,20
+bytes/9033060,10
+image/png

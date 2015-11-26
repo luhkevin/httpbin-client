@@ -40,9 +40,12 @@ uris=pool.uris
 # ht = high throughput mode
 if mode == "ht":
     uris=pool.ht_uris
+elif mode == "hilat":
+    uris=pool.hilat_uris
+
 
 uri_window_size=len(uris)/10
-
+print uri_window_size
 # This goes through the uris and makes asynchronous requests with batch size "uri_window_size"
 while True:
     count = (count + 1) % period
