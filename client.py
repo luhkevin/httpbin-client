@@ -11,7 +11,7 @@ from exceptions import IndexError
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-handler = logging.FileHandler('/tmp/demo.log')
+handler = logging.FileHandler('demo.log')
 handler.setLevel(logging.INFO)
 
 formatter = logging.Formatter("%(asctime)s;%(message)s", "%s")
