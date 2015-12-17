@@ -23,6 +23,8 @@ cookies = load_uris('cookies-endpoints')
 status = load_uris('status-endpoints', 'status/')
 ht = load_uris('ht-endpoints')
 hilat = load_uris('hilat-endpoints')
+dl = load_uris('dl-endpoints')
+
 #post = load_uris('post-endpoints', 'post/')
 #custom = load_uris('custom-endpoints')
 #response_headers = load_uris('response-headers-endpoints', 'response-headers?')
@@ -40,6 +42,9 @@ ht_uris.extend(ht)
 
 hilat_uris = list()
 hilat_uris.extend(hilat)
+
+dl_uris = list()
+dl_uris.extend(dl)
 
 periodic_uris = load_uris('periodic-endpoints')
 

@@ -42,7 +42,10 @@ if mode == "ht":
     uris=pool.ht_uris
 elif mode == "hilat":
     uris=pool.hilat_uris
-
+elif mode == "dl":
+    uris=pool.dl_uris
+elif mode == "mix":
+    uris=pool.uris
 
 uri_window_size=len(uris)/10
 print uri_window_size
