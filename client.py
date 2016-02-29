@@ -1,4 +1,3 @@
-# .... TODO: support for "post" request
 import requests
 import grequests
 import random
@@ -33,6 +32,13 @@ except IndexError, e:
 except Exception, e:
     print "Error"
 
+try:
+    url = protocol + host + ":" + port + "/"
+    r = requests.get(url)
+except Exception, e:
+    print "Connection error. Did you give the correct ip and port?"
+    sys.exit(-1)
+
 period = 200
 count=0
 uris=pool.uris
@@ -49,30 +55,32 @@ elif mode == "mix":
 
 uri_window_size=len(uris)/10
 print uri_window_size
+
 # This goes through the uris and makes asynchronous requests with batch size "uri_window_size"
-while True:
-    count = (count + 1) % period
+if __name__ == '__main__':
+    while True:
+        count = (count + 1) % period
 
-    ua_header = random.choice(pool.UA_headers)
-    headers = {ua_header[0]:ua_header[1]}
+        ua_header = random.choice(pool.UA_headers)
+        headers = {ua_header[0]:ua_header[1]}
 
-    try:
-        random.shuffle(uris)
-        uri_ptr=0
-        while uri_ptr < len(uris):
-            uri_cap = uri_ptr + uri_window_size
-            uris_window = uris[uri_ptr:uri_cap]
-            rs = (grequests.get(protocol + host + ":" + port + "/" + u, headers=headers) for u in uris_window)
-            m = grequests.map(rs)
-            print "start: ", uri_ptr, " end: ", uri_cap
-            uri_ptr += uri_window_size
-    except Exception, e:
-        print e
-
-    if count == 0:
         try:
-            for uri in pool.periodic_uris:
-                url = protocol + host + ":" + port + "/" + uri
-                r = requests.get(url, headers=headers)
+            random.shuffle(uris)
+            uri_ptr=0
+            while uri_ptr < len(uris):
+                uri_cap = uri_ptr + uri_window_size
+                uris_window = uris[uri_ptr:uri_cap]
+                rs = (grequests.get(protocol + host + ":" + port + "/" + u, headers=headers) for u in uris_window)
+                m = grequests.map(rs)
+                print "start: ", uri_ptr, " end: ", uri_cap
+                uri_ptr += uri_window_size
         except Exception, e:
             print e
+
+        if count == 0:
+            try:
+                for uri in pool.periodic_uris:
+                    url = protocol + host + ":" + port + "/" + uri
+                    r = requests.get(url, headers=headers)
+            except Exception, e:
+                print e
