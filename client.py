@@ -35,9 +35,10 @@ except Exception, e:
 try:
     url = protocol + host + ":" + port + "/"
     r = requests.get(url)
+    print "URL IS: ", url
 except Exception, e:
     print "Connection error. Did you give the correct ip and port?"
-    sys.exit(-1)
+    #sys.exit(-1)
 
 period = 200
 count=0
